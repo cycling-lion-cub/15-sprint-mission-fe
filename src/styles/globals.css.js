@@ -62,4 +62,5 @@ export const vars = createGlobalTheme(":root", {
 /* 전역 폰트 */
 globalStyle("body", {
   fontFamily: '"Pretendard", sans-serif',
+  overflowX: "hidden",
 });
