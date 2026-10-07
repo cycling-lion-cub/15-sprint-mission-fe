@@ -14,6 +14,7 @@ export default function Header() {
               alt="판다마켓 로고 이미지"
               width={153}
               height={51}
+              loading="eager"
             />
           </Link>
           <HeaderNav />
