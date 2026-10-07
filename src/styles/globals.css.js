@@ -4,7 +4,6 @@ import {
   globalStyle,
 } from "@vanilla-extract/css";
 
-/* 프리텐다드 웹 폰트 */
 const FONT_CDN = "https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0";
 
 const fontFiles = [
@@ -27,18 +26,14 @@ fontFiles.forEach(([name, weight]) => {
   });
 });
 
-/* 색상 변수 */
 export const vars = createGlobalTheme(":root", {
   color: {
-    /* Primary color */
     primary: {
       100: "#3692ff",
       200: "#1967d6",
       300: "#1251aa",
     },
-    /* Error color */
     error: "#f74747",
-    /* Secondary color */
     gray: {
       50: "#f9fafb",
       100: "#f3f4f6",
@@ -50,7 +45,6 @@ export const vars = createGlobalTheme(":root", {
       800: "#1f2937",
       900: "#111827",
     },
-    /* 디자인 가이드에 없어서, 개발자가 직접 정리해둔 부분 */
     white: "#ffffff",
     snow: "#fcfcfc",
     lightGray: "#dfdfdf",
@@ -59,8 +53,18 @@ export const vars = createGlobalTheme(":root", {
   },
 });
 
-/* 전역 폰트 */
+globalStyle("html", {
+  scrollbarGutter: "stable",
+});
+
 globalStyle("body", {
   fontFamily: '"Pretendard", sans-serif',
   overflowX: "hidden",
+  display: "flex",
+  flexDirection: "column",
+  minHeight: "100svh",
+});
+
+globalStyle("main", {
+  flexGrow: 1,
 });
