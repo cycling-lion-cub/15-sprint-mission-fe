@@ -1,17 +1,25 @@
 import { getArticles } from "@/lib/api";
+import { BestArticleCard } from "@/components/board/BestArticleCard";
+import { ArticleCard } from "@/components/board/ArticleCard";
 
 export default async function Board() {
-  const { list } = await getArticles({ pageSize: 5 });
-  console.log(list);
+  const [{ list: bestList }, { list }] = await Promise.all([
+    getArticles({ pageSize: 3 }),
+    getArticles({ pageSize: 5 }),
+  ]);
 
   return (
     <>
-      <h1>게시판이에요</h1>
+      <h2>베스트 게시글</h2>
+      <ul>
+        {bestList.map((article) => (
+          <BestArticleCard key={article.id} article={article} />
+        ))}
+      </ul>
+      <h2>게시글</h2>
       <ul>
         {list.map((article) => (
-          <li key={article.id}>
-            {article.title} : {article.id} : {article.createdAt}
-          </li>
+          <ArticleCard key={article.id} article={article} />
         ))}
       </ul>
     </>
