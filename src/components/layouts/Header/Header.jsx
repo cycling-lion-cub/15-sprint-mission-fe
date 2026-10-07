@@ -1,5 +1,6 @@
 import Link from "next/link.js";
 import Image from "next/image.js";
+import HeaderNav from "./HeaderNav.jsx";
 import * as styles from "./Header.css.js";
 
 export default function Header() {
@@ -15,14 +16,7 @@ export default function Header() {
               height={51}
             />
           </Link>
-          <div className={styles.group}>
-            <Link className={styles.item} href="/board">
-              자유게시판
-            </Link>
-            <Link className={styles.item} href="/items">
-              중고마켓
-            </Link>
-          </div>
+          <HeaderNav />
         </nav>
         <Link className={styles.login} href="/login">
           로그인

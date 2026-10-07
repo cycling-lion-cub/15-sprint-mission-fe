@@ -30,7 +30,7 @@ export const logo = style({
 });
 
 export const group = style({
-  padding: "21px 15px",
+  padding: "0 15px",
   color: vars.color.gray[600],
 });
 
