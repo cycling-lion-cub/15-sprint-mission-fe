@@ -2,14 +2,18 @@ import { getArticles } from "@/lib/api";
 import { BestArticleCard } from "@/components/board/BestArticleCard";
 import { ArticleCard } from "@/components/board/ArticleCard";
 import { ArticleSearch } from "@/components/board/ArticleSearch";
+import { ArticleSort } from "@/components/board/ArticleSort";
 
 export default async function Board({ searchParams }) {
-  const { keyword = "" } = await searchParams;
+  const { keyword = "", orderBy } = await searchParams;
   const trimmed = typeof keyword === "string" ? keyword.trim() : "";
 
   const params = { pageSize: 5 };
   if (trimmed) {
     params.keyword = trimmed;
+  }
+  if (orderBy === "recent") {
+    params.orderBy = orderBy;
   }
 
   const [{ list: bestList }, { list }] = await Promise.all([
@@ -27,6 +31,7 @@ export default async function Board({ searchParams }) {
       </ul>
       <h2>게시글</h2>
       <ArticleSearch defaultKeyword={trimmed} />
+      <ArticleSort />
       <ul>
         {list.map((article) => (
           <ArticleCard key={article.id} article={article} />
