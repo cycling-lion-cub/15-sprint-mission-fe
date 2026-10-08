@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getArticles } from "@/lib/api";
 import { BestArticleCard } from "@/components/board/BestArticleCard";
 import { ArticleCard } from "@/components/board/ArticleCard";
@@ -30,6 +31,7 @@ export default async function Board({ searchParams }) {
         ))}
       </ul>
       <h2>게시글</h2>
+      <Link href="/board/new">글쓰기</Link>
       <ArticleSearch defaultKeyword={trimmed} />
       <ArticleSort />
       <ul>
